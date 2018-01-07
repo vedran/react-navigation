@@ -330,11 +330,16 @@ class Header extends React.PureComponent<Props, State> {
       headerStyle,
     ];
 
+    let forceTopInset = 'always';
+    if(this.props.fullscreen) {
+        forceTopInset = 'never';
+    }
+
     return (
       <Animated.View {...rest}>
         <SafeAreaView
           style={containerStyles}
-          forceInset={{ top: 'always', bottom: 'never' }}
+          forceInset={{ top: forceTopInset, bottom: 'never' }}
         >
           <View style={styles.appBar}>{appBar}</View>
         </SafeAreaView>
